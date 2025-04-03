@@ -367,9 +367,9 @@ button, .view-details-btn, .remove-btn, .go-back-button, .pagination a {
 }
 
 a {
-    text-decoration: none; /* Removes underline from links */
+    text-decoration: none; 
 }
 
     a:hover {
-        text-decoration: none; /* Ensures no underline appears when hovering */
+        text-decoration: none; 
     }
