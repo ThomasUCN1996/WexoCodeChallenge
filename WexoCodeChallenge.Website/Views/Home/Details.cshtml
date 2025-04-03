@@ -1,0 +1,53 @@
+﻿@model WexoCodeChallenge.Website.TMDBService.DTO.Genre
+
+<h1>Movies in @ViewBag.GenreName</h1>
+<p>Page @ViewBag.CurrentPage of @ViewBag.TotalPages</p>
+
+@if (Model.Movies != null && Model.Movies.Any())
+{
+    <div class="movie-grid">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="movie-card">
+                <!-- Movie title as a link to movie details -->
+                <a href="@Url.Action("MovieDetails", "Home", new { id = movie.Id })">
+                    <img src="@movie.PosterPath" alt="@movie.Title" />
+                    <h3>@movie.Title (@movie.ReleaseDate)</h3>
+                    <!-- Show a short description or truncated version -->
+                    <p>
+                        @(movie.Description.Length > 100
+                            ? movie.Description.Substring(0, 100) + "..."
+                            : movie.Description)
+                    </p>
+                </a>
+
+                <!-- Add a button to go to the movie details page -->
+                <button class="movie-details-button" onclick="window.location.href='@Url.Action("MovieDetails", "Home", new { id = movie.Id })'">
+                    View Details
+                </button>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No movies available in this genre.</p>
+}
+
+<div class="pagination">
+    @if (ViewBag.CurrentPage > 1)
+    {
+        <a href="@Url.Action("Details", new { id = Model.Id, page = 1 })">First</a>
+        <a href="@Url.Action("Details", new { id = Model.Id, page = ViewBag.CurrentPage - 1 })">Previous</a>
+    }
+
+    @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+    {
+        <a href="@Url.Action("Details", new { id = Model.Id, page = i })" class="@(i == ViewBag.CurrentPage ? "active" : "")">@i</a>
+    }
+
+    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+    {
+        <a href="@Url.Action("Details", new { id = Model.Id, page = ViewBag.CurrentPage + 1 })">Next</a>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WexoCodeChallenge.Website.TMDBService.DTO.Genre>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="logo-container">
+    <img src="~/images/wexo-logo.png" alt="WEXO MovieDatabase Logo" height="420" asp-append-version="true">
+</div>
+@foreach (var genre in Model)
+{
+    <h2>@genre.Name (@genre.MovieCount movies)</h2>
+
+    <div class="movie-container">
+
+        @if (genre.Movies != null && genre.Movies.Any())
+        {
+            @foreach (var movie in genre.Movies.Take(8)) // Show only 8 movies per genre
+            {
+                <div class="movie-card">
+                    <a href="@Url.Action("MovieDetails", "Home", new { id = movie.Id })">
+                        <img src="@movie.PosterPath" alt="@movie.Title" />
+                    </a>
+                    <p>@movie.Title</p>
+
+                    <!-- Form to add movie to wishlist -->
+                    <form action="@Url.Action("AddToWishlist", "Wishlist")" method="post">
+                        <input type="hidden" name="id" value="@movie.Id" />
+                        <input type="hidden" name="title" value="@movie.Title" />
+                        <input type="hidden" name="posterPath" value="@movie.PosterPath" />
+                        <button type="submit">Add to Wishlist</button>
+                    </form>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No movies available.</p>
+        }
+    </div>
+
+    <!-- Centering the "View More" link -->
+    <div class="view-more-container">
+        @Html.ActionLink("View More", "Details", "Home", new { id = genre.Id }, new { @class = "view-more-link" })
+    </div>
+}

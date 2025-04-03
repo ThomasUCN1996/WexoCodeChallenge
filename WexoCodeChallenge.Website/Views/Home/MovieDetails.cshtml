@@ -1,0 +1,132 @@
+﻿@model WexoCodeChallenge.Website.TMDBService.DTO.Movie
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="movie-details">
+    <h1 style="margin-top: 90px;">@Model.Title</h1>
+    @if (!string.IsNullOrEmpty(Model.Tagline))
+    {
+        <h2 class="tagline">@Model.Tagline</h2>
+    }
+    <div class="movie-meta">
+        <p><strong>Release Date:</strong> @Model.ReleaseDate</p>
+        <p><strong>Runtime:</strong> @Model.Runtime minutes</p>
+        <p><strong>Status:</strong> @Model.Status</p>
+    </div>
+    <div class="movie-poster">
+        <img src="@Model.PosterPath" alt="@Model.Title Poster" />
+    </div>
+    <div class="movie-info">
+        <p><strong>Description:</strong> @Model.Description</p>
+        <p><strong>Genres:</strong> @string.Join(", ", Model.Genres.Select(g => g.Name))</p>
+        <p><strong>Average Rating:</strong> @Model.VoteAverage/10 (@Model.VoteCount votes)</p>
+        @if (!string.IsNullOrEmpty(Model.Homepage))
+        {
+            <p><strong>Official Website:</strong> <a href="@Model.Homepage" target="_blank">@Model.Homepage</a></p>
+        }
+    </div>
+
+
+    @if (Model.Videos != null && Model.Videos.Any())
+    {
+        var trailer = Model.Videos.FirstOrDefault();
+        if (trailer != null)
+        {
+            <div class="movie-trailer">
+                <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/@trailer.Key"
+                        frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+        }
+    }
+
+    <!-- Add to Wishlist form -->
+    <form action="@Url.Action("AddToWishlist", "Wishlist")" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="hidden" name="title" value="@Model.Title" />
+        <input type="hidden" name="posterPath" value="@Model.PosterPath" />
+        <button type="submit" class="add-to-wishlist-button">Add to Wishlist</button>
+    </form>
+    
+    <button onclick="window.history.back()" class="go-back-button">Go Back</button>
+</div>
+
+<style>
+    .movie-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .tagline {
+        font-style: italic;
+        color: #555;
+    }
+
+    .movie-meta {
+        text-align: center;
+        font-size: 1.1em;
+    }
+
+    .movie-poster img {
+        width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .movie-info {
+        max-width: 600px;
+        text-align: left;
+        line-height: 1.6;
+    }
+
+        .movie-info p {
+            margin: 10px 0;
+        }
+
+    .add-to-wishlist-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+    }
+
+        .add-to-wishlist-button:hover {
+            background-color: #0056b3;
+        }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .go-back-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+    }
+
+        .go-back-button:hover {
+            background-color: #0056b3;
+        }
+</style>

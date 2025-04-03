@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WexoCodeChallenge.Website", "WexoCodeChallenge.Website\WexoCodeChallenge.Website.csproj", "{C8B42AFE-2041-4AEE-AC5C-670E63BF7366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WexoCodeChallenge.Tests", "WexoCodeChallenge.Tests\WexoCodeChallenge.Tests.csproj", "{28A67873-6834-47D6-AF18-1E6C106847AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8B42AFE-2041-4AEE-AC5C-670E63BF7366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B42AFE-2041-4AEE-AC5C-670E63BF7366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B42AFE-2041-4AEE-AC5C-670E63BF7366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B42AFE-2041-4AEE-AC5C-670E63BF7366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A67873-6834-47D6-AF18-1E6C106847AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A67873-6834-47D6-AF18-1E6C106847AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A67873-6834-47D6-AF18-1E6C106847AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A67873-6834-47D6-AF18-1E6C106847AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE880CAD-0AC9-4964-9BAF-37A86B7532DB}
+	EndGlobalSection
+EndGlobal

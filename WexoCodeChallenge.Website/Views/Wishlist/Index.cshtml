@@ -1,0 +1,39 @@
+﻿@using WexoCodeChallenge.Website.TMDBService.DTO
+@model List<Movie>
+
+<h2 style="margin-top: 90px;">Your Wishlist</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="wishlist-table">
+        <thead>
+            <tr>
+                <th>Poster</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@movie.PosterPath" alt="@movie.Title" style="width: 60px; height: 90px;" />
+                    </td>
+                    <td>@movie.Title</td>
+                    <td>
+                        <!-- Link to view movie details -->
+                        <a asp-controller="Home" asp-action="MovieDetails" asp-route-id="@movie.Id" class="view-details-btn">View Details</a>
+
+                        <!-- Link to remove movie from wishlist -->
+                        <a asp-controller="Wishlist" asp-action="RemoveFromWishlist" asp-route-id="@movie.Id" class="remove-btn">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Your wishlist is empty.</p>
+}

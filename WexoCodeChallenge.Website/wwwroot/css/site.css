@@ -1,0 +1,375 @@
+/* Base Body Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+    background-color: #f4f7fc; /* Light background color */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Global Container for Movie Grid */
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller cards, better fit */
+    gap: 15px; /* Reduced gap between cards */
+    padding: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Movie Card Design */
+.movie-card {
+    text-align: center;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+    .movie-card:hover {
+        transform: scale(1.1); /* Increase size on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+        background-color: #e0f2ff; /* Light blue background */
+    }
+
+    .movie-card img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .movie-card p {
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    /* Hover effect for the button */
+    .movie-card .movie-details-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px; /* Reduced padding */
+        font-size: 0.9em; /* Smaller font size */
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .movie-card:hover .movie-details-button {
+        opacity: 1; /* Make button visible on hover */
+    }
+
+    .movie-card .movie-details-button:hover {
+        background-color: #d94c28; /* Darker button on hover */
+    }
+
+/* Pagination Styling */
+.pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+    .pagination a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #007bff;
+        font-size: 1.1em;
+        padding: 10px 20px;
+        border-radius: 50px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+/* View More & Go Back Buttons */
+.view-more-link, .go-back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Smaller padding to match the previous button */
+    font-size: 0.9em; /* Smaller font size to fit the design */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space above the button */
+}
+
+    .view-more-link:hover, .go-back-button:hover {
+        background-color: #0056b3;
+    }
+
+.view-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .movie-container {
+        grid-template-columns: 1fr 1fr; /* Adjusted to 2 columns */
+    }
+
+    .movie-card {
+        width: 90%;
+    }
+
+        .movie-card h3 {
+            font-size: 1em;
+        }
+
+        .movie-card p {
+            font-size: 0.85em;
+        }
+
+    .view-more-link, .go-back-button {
+        font-size: 1em;
+    }
+}
+
+/* Fancy Animations for Movie Cards */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movie-card {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Add smooth transition for container elements */
+.movie-container {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+.wishlist-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .wishlist-table th, .wishlist-table td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 1.1em;
+    }
+
+    .wishlist-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .wishlist-table td img {
+        width: 60px;
+        height: 90px;
+        object-fit: cover; /* Ensures the image fits in the given dimensions */
+        border-radius: 4px;
+    }
+
+/* Action Buttons */
+.remove-btn, .view-details-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    /* Hover Effects for Action Buttons */
+    .remove-btn:hover, .view-details-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Remove Button Specific Styling */
+.remove-btn {
+    background-color: #d94c28;
+    font-weight: bold;
+}
+
+    .remove-btn:hover {
+        background-color: #b24d16;
+    }
+
+/* View Details Button Styling */
+.view-details-btn {
+    background-color: #007bff;
+}
+
+    .view-details-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Table Responsiveness */
+@media (max-width: 768px) {
+    .wishlist-table th, .wishlist-table td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+        .wishlist-table td img {
+            width: 50px;
+            height: 75px;
+        }
+}
+
+/* Wishlist Table Row Hover Effect */
+.wishlist-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Wishlist Heading */
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Empty Wishlist Message */
+p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    margin-top: 20px;
+}
+
+.remove-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .remove-btn:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+.view-details-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.view-details-btn:hover {
+    background-color: white;
+}
+
+
+button, .view-details-btn, .remove-btn, .go-back-button, .pagination a {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    button:hover, .view-details-btn:hover, .remove-btn:hover, .go-back-button:hover, .pagination a:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+    opacity: 0; /* Start hidden */
+    transition: opacity 1.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+    .logo-container.show {
+        opacity: 1;
+    }
+
+.navbar {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out;
+    position: fixed; /* Keep navbar at the top */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+    .navbar.show {
+        opacity: 1;
+    }
+
+
+/* Movie Poster on Details Page */
+.movie-card img {
+    width: 100%;
+    max-width: 300px; /* Set max width for movie poster */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 15px;
+}
+
+/* Adjust movie grid layout on the details page */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Optional: Increase size of movie poster on hover for better visibility */
+.movie-card:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.3s ease;
+}
+/* Adjust styles for movie details page */
+.movie-details-page .movie-card img {
+    max-width: 400px; /* Limit poster size */
+}
+
+.movie-details-page .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust columns */
+    gap: 10px;
+}
+
+a {
+    text-decoration: none; /* Removes underline from links */
+}
+
+    a:hover {
+        text-decoration: none; /* Ensures no underline appears when hovering */
+    }
